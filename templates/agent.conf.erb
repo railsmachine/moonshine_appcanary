@@ -5,9 +5,9 @@ api_key = "<%= configuration[:appcanary][:api_key] %>"
 [[files]]
 path = "/var/lib/dpkg/status"
 
-<% if File.exist?(rails_root.join('Gemfile.lock')) %>
+<% if File.exist?(configuration[:deploy_to] + '/current/Gemfile.lock') %>
 [[files]]
-path = "<%= rails_root.join('Gemfile.lock') %>"
+path = "<%= configuration[:deploy_to] %>/current/Gemfile.lock"
 <% end %>
 
 <% configuration[:appcanary][:files].each do |file| %>
