@@ -10,7 +10,7 @@ path = "/var/lib/dpkg/status"
 path = "<%= configuration[:deploy_to] %>/current/Gemfile.lock"
 <% end %>
 
-<% configuration[:appcanary][:files].each do |file| %>
+<% (configuration[:appcanary][:files] || []).each do |file| %>
 [[files]]
 path = "<%= file %>"
 
