@@ -1,0 +1,17 @@
+# Get your api key at https://www.appcanary.com/settings
+api_key = "<%= configuration[:appcanary][:api_key] %>"
+
+# ubuntu packages
+[[files]]
+path = "/var/lib/dpkg/status"
+
+<% if File.exist?(rails_root.join('Gemfile.lock')) %>
+[[files]]
+path = "<%= rails_root.join('Gemfile.lock') %>"
+<% end %>
+
+<% configuration[:appcanary][:files].each do |file| %>
+[[files]]
+path = "<%= file %>"
+
+<% end %>
